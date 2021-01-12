@@ -1,0 +1,19 @@
+body {
+    font-family: 'Rubik', sans-serif;
+}
+
+.hide {
+    display: none;
+}
+
+.explore-options-form {
+    display: block;
+}
+
+.news-wrapper {
+    display: flex;
+}
+
+.search-params {
+    display: inline;
+}

@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { getRequestedNews } from './Data'
+import '../styles.css'
+const reqSvgs = require.context('../Assets/CountriesSVG', true, /\.svg$/)
 
 const Explore = () => {
     const [searchParams, setSearchParams] = useState({
@@ -11,6 +13,7 @@ const Explore = () => {
         languages: [],
     })
     const [reqNewsStories, setReqNewsStories] = useState([])
+    const [isClicked, setIsClicked] = useState(false)
 
     const getRequestedLiveNews = async (searchTerms) => {
         try {
@@ -21,9 +24,8 @@ const Explore = () => {
             console.log(err)
         }
     }
-    const handleSubmit = (e) => {
-        getRequestedLiveNews(searchParams)
-        e.preventDefault()
+    const handleClick = () => {
+        setIsClicked((prevValue) => !prevValue)
         setSearchParams({
             keyword: '',
             limit: '',
@@ -32,6 +34,11 @@ const Explore = () => {
             countries: [],
             languages: [],
         })
+    }
+    const handleSubmit = (e) => {
+        setIsClicked((prevValue) => !prevValue)
+        getRequestedLiveNews(searchParams)
+        e.preventDefault()
     }
 
     const handleChange = (e) => {
@@ -87,10 +94,17 @@ const Explore = () => {
                 console.log('Sorry, there is no matching case')
         }
     }
+    const allSvgFilePaths = reqSvgs.keys()
+    const imagePath = allSvgFilePaths[0]
+    const image = reqSvgs(imagePath)
+    console.log(imagePath)
+    console.log(allSvgFilePaths)
+    console.log(image.default)
 
     return (
         <div>
-            <div className='explore-options-form'>
+            {/* <img src={image.default} alt='pic' /> */}
+            <div className={isClicked ? 'hide' : 'explore-options-form'}>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor='keyword'>Keywords:</label>
                     <input
@@ -217,7 +231,7 @@ const Explore = () => {
                         <option value='ua'>Ukraine</option>
                         <option value='gb'>United Kingdom</option>
                         <option value='us'>United States</option>
-                        <option value='ve'>Venuzuela</option>
+                        <option value='ve'>Venezuela</option>
                     </select>
                     <br />
                     <label htmlFor='languages-select'>Choose languages:</label>
@@ -247,7 +261,49 @@ const Explore = () => {
                     <input type='submit' value='Submit'></input>
                 </form>
             </div>
-            <div>
+            <div className={isClicked ? 'news-wrapper' : 'hide'}>
+                <div className='search-params-wrapper'>
+                    <p>Displaying articles for:</p>
+                    <div
+                        className={
+                            searchParams.keyword ? 'search-params' : 'hide'
+                        }
+                    >
+                        {searchParams.keyword}
+                    </div>
+                    <div
+                        className={
+                            searchParams.limit ? 'search-params' : 'hide'
+                        }
+                    >
+                        {searchParams.limit}
+                    </div>
+                    <div
+                        className={searchParams.sort ? 'search-params' : 'hide'}
+                    >
+                        {searchParams.sort}
+                    </div>
+
+                    {searchParams.categories.map((category) => {
+                        return <div className='search-params'>{category}</div>
+                    })}
+                    {searchParams.countries.map((country) => {
+                        return (
+                            <div className='search-params' key={country + 1}>
+                                <img
+                                    src={reqSvgs(`./${country}.svg`).default}
+                                    alt='country'
+                                ></img>
+                            </div>
+                        )
+                    })}
+                    {searchParams.languages.map((language) => {
+                        return <div className='search-params'>{language}</div>
+                    })}
+
+                    <p>Not found what you're looking for? </p>
+                    <button onClick={handleClick}>Try again</button>
+                </div>
                 {reqNewsStories.map((newsStory, index) => {
                     const {
                         url,

@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react'
-import sampleData from '../sampleData'
-// import { getTop50 } from './Data'
+// import sampleData from '../sampleData'
+import { getTop50 } from './Data'
 
 const Top50News = () => {
     const [liveNews, setLiveNews] = useState([])
 
-    // const getLiveNews = async () => {
-    //     const response = await getTop50()
-    //     console.log(response.data)
-    //     setLiveNews(response.data)
-    // }
-
-    // useEffect(() => {
-    //     getLiveNews()
-    // }, [])
+    const getLiveNews = async () => {
+        const response = await getTop50()
+        console.log('client response received:', response.data)
+        setLiveNews(response.data)
+    }
 
     useEffect(() => {
-        setLiveNews(sampleData)
+        getLiveNews()
     }, [])
+
+    // useEffect(() => {
+    //     setLiveNews(sampleData)
+    // }, [])
 
     return (
         <div>
