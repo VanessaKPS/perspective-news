@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
-import { getRequestedNews } from './Data'
-import {
-    SortOptions,
-    SearchLanguages,
-    SearchCategories,
-    SearchCountries,
-} from './SearchOptions'
-import '../styles.css'
-const reqSvgs = require.context('../Assets/CountriesSVG', true, /\.svg$/)
+import { getRequestedNews } from './DataServices'
+import SearchForm from './SearchForm'
+import RequestedSearchTerms from './RequestedSearchTerms'
+import News from './News'
+const reqCatSvgs = require.context('../Assets/CategoriesSVG', true, /\.svg$/)
 
 const Explore = () => {
+    //state for searchParameters collected and sent to database
     const [searchParams, setSearchParams] = useState({
         keyword: '',
         limit: '',
@@ -18,10 +15,14 @@ const Explore = () => {
         countries: [],
         languages: [],
     })
+    // state for data retrieved from database
     const [reqNewsStories, setReqNewsStories] = useState([])
+    //state controlling tryAgain request to render search form or news stories
     const [isClicked, setIsClicked] = useState(false)
+    //state to reset/re-render search form
     const [reqNewSearch, setReqNewSearch] = useState(false)
 
+    //function to make get req to database and set data
     const getRequestedLiveNews = async (searchTerms) => {
         try {
             const result = await getRequestedNews(searchTerms)
@@ -31,6 +32,7 @@ const Explore = () => {
             console.log(err)
         }
     }
+    //function to change tryAgain state and re-set searchParams state to null
     const handleClick = () => {
         // setReqNewSearch((prevValue) => !prevValue)
         setIsClicked((prevValue) => !prevValue)
@@ -43,6 +45,7 @@ const Explore = () => {
             languages: [],
         })
     }
+    //function to change state to re-render search form, change tryAgain state to render News stories, get data from database
     const handleSubmit = (e) => {
         setReqNewSearch((prevValue) => !prevValue)
         setIsClicked((prevValue) => !prevValue)
@@ -50,6 +53,7 @@ const Explore = () => {
         e.preventDefault()
     }
 
+    //function to set searchParams for strings
     const handleInputChange = (e) => {
         if (e.target.name === 'keyword') {
             setSearchParams((prevValues) => ({
@@ -64,6 +68,8 @@ const Explore = () => {
             }))
         }
     }
+
+    //function to set searchParams for arrays
     const handleSelectChange = (name, option) => {
         switch (name) {
             case 'sort':
@@ -124,151 +130,24 @@ const Explore = () => {
         }
     }
 
-    // const allSvgFilePaths = reqSvgs.keys()
-    // const imagePath = allSvgFilePaths[0]
-    // const image = reqSvgs(imagePath)
-    // console.log(imagePath)
-    // console.log(allSvgFilePaths)
-    // console.log(image.default)
-
     return (
         <div>
-            {/* <img src={image.default} alt='pic' /> */}
-            <div className={isClicked ? 'hide' : 'explore-options-form'}>
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor='keyword'>Keywords</label>
-                    <input
-                        className='keyword-input'
-                        type='text'
-                        id='keyword'
-                        name='keyword'
-                        value={searchParams.keyword}
-                        onChange={handleInputChange}
-                        placeholder='Separate multiple keywords with ","'
-                    ></input>
-                    <br />
-                    <label htmlFor='limit'>No. of articles</label>
-                    <input
-                        className='limit-input'
-                        type='text'
-                        id='limit'
-                        name='limit'
-                        value={searchParams.limit}
-                        onChange={handleInputChange}
-                        placeholder='Maximum of 100 articles'
-                    ></input>
-                    <br />
-                    <label htmlFor='sort-select'>Sort by</label>
-                    <SortOptions
-                        name='sort'
-                        id='sort-select'
-                        status={reqNewSearch}
-                        // value={searchParams.sort}
-                        chosen={handleSelectChange}
-                    ></SortOptions>
-
-                    <br />
-                    <label htmlFor='categories-select'>Categories</label>
-                    <SearchCategories
-                        name='categories'
-                        id='categories-select'
-                        status={reqNewSearch}
-                        // selected={searchParams.categories}
-                        chosen={handleSelectChange}
-                    ></SearchCategories>
-                    <br />
-                    <label htmlFor='countries-select'>Countries</label>
-                    <SearchCountries
-                        name='countries'
-                        id='countries-select'
-                        status={reqNewSearch}
-                        // value={searchParams.countries}
-                        chosen={handleSelectChange}
-                    ></SearchCountries>
-
-                    <br />
-                    <label htmlFor='languages-select'>Languages</label>
-                    <SearchLanguages
-                        name='languages'
-                        id='languages-select'
-                        status={reqNewSearch}
-                        // value={searchParams.languages}
-                        chosen={handleSelectChange}
-                    ></SearchLanguages>
-
-                    <br />
-                    <input type='submit' value='Submit'></input>
-                </form>
+            <div className={isClicked ? 'hide' : 'search-form-wrapper'}>
+                <SearchForm
+                    reqStatus={reqNewSearch}
+                    reqTerms={searchParams}
+                    submission={handleSubmit}
+                    inputChange={handleInputChange}
+                    selectChange={handleSelectChange}
+                />
             </div>
-            <div className={isClicked ? 'news-wrapper' : 'hide'}>
-                <div className='search-params-wrapper'>
-                    <p>Displaying articles for:</p>
-                    <div
-                        className={
-                            searchParams.keyword ? 'search-params' : 'hide'
-                        }
-                    >
-                        {searchParams.keyword}
-                    </div>
-                    <div
-                        className={
-                            searchParams.limit ? 'search-params' : 'hide'
-                        }
-                    >
-                        {searchParams.limit}
-                    </div>
-                    <div
-                        className={searchParams.sort ? 'search-params' : 'hide'}
-                    >
-                        {searchParams.sort}
-                    </div>
-
-                    {searchParams.categories.map((category) => {
-                        return (
-                            <div className='search-params' key={category + 1}>
-                                {category}
-                            </div>
-                        )
-                    })}
-                    {searchParams.countries.map((country) => {
-                        return (
-                            <div className='search-params' key={country + 1}>
-                                <img
-                                    src={reqSvgs(`./${country}.svg`).default}
-                                    alt='country'
-                                ></img>
-                            </div>
-                        )
-                    })}
-                    {searchParams.languages.map((language) => {
-                        return (
-                            <div className='search-params' key={language + 1}>
-                                {language}
-                            </div>
-                        )
-                    })}
-
-                    <p>Not found what you're looking for? </p>
-                    <button onClick={handleClick}>Try again</button>
-                </div>
-                {reqNewsStories.map((newsStory, index) => {
-                    const {
-                        url,
-                        category,
-                        source,
-                        title,
-                        description,
-                    } = newsStory
-                    return (
-                        <div className='' key={`${index} ${title}`}>
-                            <p>title: {title}</p>
-                            <p>source: {source}</p>
-                            <p>description: {description}</p>
-                            <a href={url}>link</a>
-                            <p>{category}</p>
-                        </div>
-                    )
-                })}
+            <div className={isClicked ? 'explore-news-wrapper' : 'hide'}>
+                <RequestedSearchTerms
+                    reqTerms={searchParams}
+                    newSearch={handleClick}
+                    categoryImages={reqCatSvgs}
+                />
+                <News newsArray={reqNewsStories} categoryImages={reqCatSvgs} />
             </div>
         </div>
     )

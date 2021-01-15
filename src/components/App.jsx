@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Top50News from './Top50News'
 import Explore from './Explore'
+import '../styles/styles.scss'
 
 const App = () => {
     return (
