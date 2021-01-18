@@ -4,7 +4,7 @@ import {
     SearchLanguages,
     SearchCategories,
     SearchCountries,
-} from './SearchOptions'
+} from './SelectSearch'
 
 const SearchForm = (props) => {
     const { reqTerms, reqStatus, submission, inputChange, selectChange } = props
@@ -36,7 +36,7 @@ const SearchForm = (props) => {
                 placeholder='Separate multiple keywords with ","'
             ></input>
             <br />
-            <label htmlFor='limit'>No. of articles</label>
+            <label htmlFor='limit'>No. of Articles</label>
             <input
                 className='limit-input'
                 type='text'
@@ -80,7 +80,7 @@ const SearchForm = (props) => {
                 chosen={selectionChange}
             ></SearchLanguages>
             <br />
-            <input type='submit' value='Submit'></input>
+            <input className='btn' type='submit' value='Submit'></input>
         </form>
     )
 }

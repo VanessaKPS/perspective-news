@@ -1,4 +1,5 @@
 import React from 'react'
+import Cube from './Cube'
 const reqCatSvgs = require.context('../Assets/CategoriesSVG', true, /\.svg$/)
 
 const News = (props) => {
@@ -18,16 +19,17 @@ const News = (props) => {
                     <div className='news' key={`${index} ${title}`}>
                         <a href={url}>
                             <div className='news-image-wrapper'>
-                                <img
-                                    className='news-image'
-                                    src={
-                                        image
-                                            ? image
-                                            : reqCatSvgs(`./${category}.svg`)
-                                                  .default
-                                    }
-                                    alt='article'
-                                />
+                                {image ? (
+                                    <img
+                                        className='news-image'
+                                        src={image}
+                                        alt='article'
+                                    />
+                                ) : (
+                                    <div className='cube'>
+                                        <Cube usage='placeholder' />
+                                    </div>
+                                )}
                             </div>
                             <div className='news-info-wrapper'>
                                 <h3 className='news-title'>{title}</h3>

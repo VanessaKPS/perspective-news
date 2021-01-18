@@ -1,38 +1,52 @@
 @import './_config.scss';
 @import './_utilities.scss';
+@import './_input.scss';
+@import './_button.scss';
+@import './_cube.scss';
 
 body {
     font-family: $font-stack;
     max-width: 100vw;
     width: 100%;
     height: 100%;
+    color: #393e46;
+    background-color: #fcf9f4;
+    font-size: 18px;
+}
+.navbar {
+    background-color: #ff6464;
+    @include flexContainer(row);
+    width: 100%;
+    padding: 1% 10%;
+    justify-content: space-between;
+    .navbar-brand {
+        text-decoration: none;
+        cursor: pointer;
+        color: #fff;
+        .navbar-brand-wrapper {
+            @include flexContainer(column);
+            height: 6rem;
+            justify-content: space-evenly;
+        }
+    }
+    .navbar-link-wrapper {
+        width: 30%;
+        @include flexContainer(row);
+        justify-content: space-around;
+    }
+    .nav-link {
+        text-decoration: none;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .logo {
+        margin: $margin;
+        width: 50px;
+        height: 50px;
+    }
 }
 
-// .limit-input,
-// .keyword-input {
-//     display: block;
-//     width: 100%;
-//     border-radius: 4px;
-//     background-color: hsl(0, 0%, 100%);
-//     border-color: hsl(0, 0%, 80%);
-//     border-radius: 4px;
-//     border-style: solid;
-//     border-width: 1px;
-//     cursor: default;
-//     min-height: 38px;
-// }
-
-// .search-form-wrapper {
-//     display: block;
-// }
-
-// .explore-news-wrapper {
-//     display: flex;
-// }
-
-// .search-params-wrapper {
-//     display: inline;
-// }
 .top-50-news-wrapper {
     @include flexContainer(column);
     h1 {
@@ -49,23 +63,26 @@ body {
 
 .news {
     @include flexContainer(column);
-    width: 350px;
-    height: 450px;
+    width: 360px;
+    height: 480px;
     text-align: center;
-    margin: 1rem;
-    border-bottom: 1px solid pink;
+    margin: $margin;
 
     a {
         width: 100%;
         height: 100%;
         text-decoration: none;
-        color: black;
+        color: #393e46;
+        background-color: #f2f2f0;
+        box-shadow: 10px 5px 5px #c1c1c1;
+        border-radius: 6px;
     }
 
     .news-image-wrapper {
-        margin: 1rem auto;
+        @include flexContainer(row);
+        margin: 1rem auto 0;
         width: 100%;
-        height: 40%;
+        height: 37%;
         border-radius: 4px;
     }
 
@@ -78,20 +95,98 @@ body {
     .news-info-wrapper {
         @include flexContainer(column);
         justify-content: space-between;
-        height: 40%;
-        margin: 1rem;
-        .news-title,
+        height: 43%;
+        padding: 1rem;
+        margin: 0 auto 1rem;
+        .news-title {
+            margin-bottom: 0.4rem;
+        }
         .news-source {
-            margin-bottom: 0.5rem;
+            @extend .news-title;
+            font-size: 16px;
+        }
+        .news-description {
+            font-size: 14px;
+            font-weight: 300;
         }
     }
 
     .news-category-wrapper {
-        height: 17%;
+        height: 12%;
+        @include flexContainer(column);
 
         .news-category-image {
             width: 10%;
-            margin-bottom: 20px;
         }
+    }
+}
+
+.explore-news-wrapper {
+    margin: $margin;
+    width: 100%;
+    height: 100%;
+}
+
+.search-form-wrapper {
+    background-color: #f2f2f0;
+    box-shadow: 10px 5px 5px #c1c1c1;
+    border-radius: 6px;
+    width: 70%;
+    height: 80vh;
+    margin: 2.5rem auto;
+    padding: 2rem;
+
+    .keyword-input {
+        @extend %input;
+    }
+    .limit-input {
+        @extend %input;
+    }
+    .search-form {
+        width: 100%;
+        height: 100%;
+    }
+}
+.btn {
+    @extend %btn;
+}
+
+.results-wrapper {
+    width: 80%;
+    height: 100%;
+    margin: auto;
+
+    @include flexContainer(column);
+}
+
+.search-params-wrapper {
+    background-color: #f2f2f0;
+    box-shadow: 10px 5px 5px #c1c1c1;
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 1rem;
+    @include flexContainer(column);
+    justify-content: space-between;
+    .search-term-wrapper {
+        width: 100%;
+        padding: 1rem;
+        margin: $margin;
+        @include flexContainer(row);
+        justify-content: space-around;
+        img {
+            width: 30px;
+            height: 30px;
+        }
+        .search-params-text {
+            color: #f2f2f0;
+            padding: 0.5rem;
+            border: 1px;
+            border-radius: 4px;
+        }
+    }
+    .btn {
+        margin: $margin;
     }
 }

@@ -2,6 +2,8 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Top50News from './Top50News'
 import Explore from './Explore'
+
+import Logo from '../Assets/CategoriesSVG/cube.svg'
 import '../styles/styles.scss'
 
 const App = () => {
@@ -9,31 +11,27 @@ const App = () => {
         <Router>
             <div className='app-wrapper'>
                 <nav className='navbar'>
-                    <a
-                        className='navbar-brand'
-                        href='http://localhost:3000'
-                        target='_blank'
-                        rel='noreferrer'
-                    >
-                        <img
-                            src='https://www.flaticon.com/svg/static/icons/svg/2844/2844433.svg'
-                            width='30'
-                            height='30'
-                            alt='perspective news aggregator app'
-                        />
-                    </a>
                     <Link to='/' className='navbar-brand'>
-                        Perspective News App
+                        <div className='navbar-brand-wrapper'>
+                            <img
+                                className='logo'
+                                src={Logo}
+                                alt='perspective news aggregator app'
+                            />
+                            Perspective News
+                        </div>
                     </Link>
+                    <div className='navbar-link-wrapper'>
+                        <Link to='/' className='nav-link'>
+                            Home
+                        </Link>
 
-                    <Link to='/' className='nav-link'>
-                        Home
-                    </Link>
-
-                    <Link to='/explore' className='nav-link'>
-                        Explore
-                    </Link>
+                        <Link to='/explore' className='nav-link'>
+                            Explore
+                        </Link>
+                    </div>
                 </nav>
+
                 <Route path='/' exact component={Top50News} />
 
                 <Route path='/explore' component={Explore} />

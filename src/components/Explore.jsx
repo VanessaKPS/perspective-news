@@ -21,14 +21,18 @@ const Explore = () => {
     const [isClicked, setIsClicked] = useState(false)
     //state to reset/re-render search form
     const [reqNewSearch, setReqNewSearch] = useState(false)
+    //state for loading
+    const [isLoading, setIsLoading] = useState(false)
 
     //function to make get req to database and set data
     const getRequestedLiveNews = async (searchTerms) => {
         try {
             const result = await getRequestedNews(searchTerms)
             setReqNewsStories(result.data)
+            setIsLoading(false)
             console.log(`the result.data is :${result.data}`)
         } catch (err) {
+            setIsLoading(false)
             console.log(err)
         }
     }
@@ -50,6 +54,7 @@ const Explore = () => {
         setReqNewSearch((prevValue) => !prevValue)
         setIsClicked((prevValue) => !prevValue)
         getRequestedLiveNews(searchParams)
+        setIsLoading(true)
         e.preventDefault()
     }
 
@@ -131,7 +136,7 @@ const Explore = () => {
     }
 
     return (
-        <div>
+        <div className='explore-news-wrapper'>
             <div className={isClicked ? 'hide' : 'search-form-wrapper'}>
                 <SearchForm
                     reqStatus={reqNewSearch}
@@ -141,13 +146,20 @@ const Explore = () => {
                     selectChange={handleSelectChange}
                 />
             </div>
-            <div className={isClicked ? 'explore-news-wrapper' : 'hide'}>
+            <div className={isClicked ? 'results-wrapper' : 'hide'}>
                 <RequestedSearchTerms
                     reqTerms={searchParams}
                     newSearch={handleClick}
                     categoryImages={reqCatSvgs}
                 />
-                <News newsArray={reqNewsStories} categoryImages={reqCatSvgs} />
+                {isLoading ? (
+                    <h1>loading..</h1>
+                ) : (
+                    <News
+                        newsArray={reqNewsStories}
+                        categoryImages={reqCatSvgs}
+                    />
+                )}
             </div>
         </div>
     )
