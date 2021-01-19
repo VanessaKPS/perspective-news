@@ -3,15 +3,26 @@
     margin: 0;
     padding: 0;
 }
-
-$font-stack: 'Rubik', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
 
 //variables mixin functions
+$font-stack: Rubik, sans-serif;
+
+$margin: 1rem auto;
+
+$body-font-size: 20px;
+
+$font-color: #2c2e3e;
+$nav-font-color: #f2f2ec;
+
+$body-bg-color: #fdfdfd;
+$nav-bg-color: #34374c;
+$news-bg-color: #f7f6f6;
+$box-shadow: #dfdede;
+
 @mixin flexContainer($direction) {
     display: flex;
     flex-direction: $direction;
     justify-content: center;
     align-items: center;
 }
-
-$margin: 1rem auto;

@@ -5,7 +5,7 @@ const RequestedSearchTerms = (props) => {
     const { reqTerms, newSearch, categoryImages } = props
     const { keyword, limit, sort, categories, countries, languages } = reqTerms
     let keywordArray = keyword
-    if (keyword === null) {
+    if (keyword === '') {
         keywordArray = null
     } else {
         keywordArray = keyword.split(',')

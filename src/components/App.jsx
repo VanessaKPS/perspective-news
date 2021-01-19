@@ -27,7 +27,7 @@ const App = () => {
                         </Link>
 
                         <Link to='/explore' className='nav-link'>
-                            Explore
+                            Search
                         </Link>
                     </div>
                 </nav>

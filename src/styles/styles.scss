@@ -9,20 +9,21 @@ body {
     max-width: 100vw;
     width: 100%;
     height: 100%;
-    color: #393e46;
-    background-color: #fcf9f4;
-    font-size: 18px;
+    color: $font-color;
+    background-color: $body-bg-color;
+    font-size: $body-font-size;
 }
 .navbar {
-    background-color: #ff6464;
+    background-color: $nav-bg-color;
     @include flexContainer(row);
     width: 100%;
     padding: 1% 10%;
     justify-content: space-between;
+
     .navbar-brand {
         text-decoration: none;
         cursor: pointer;
-        color: #fff;
+        color: $nav-font-color;
         .navbar-brand-wrapper {
             @include flexContainer(column);
             height: 6rem;
@@ -36,12 +37,11 @@ body {
     }
     .nav-link {
         text-decoration: none;
-        color: #fff;
+        color: $nav-font-color;
         cursor: pointer;
     }
 
     .logo {
-        margin: $margin;
         width: 50px;
         height: 50px;
     }
@@ -55,7 +55,7 @@ body {
 }
 .news-wrapper {
     @include flexContainer(row);
-    width: 80vw;
+    width: 90vw;
     height: 100%;
     margin: 2rem auto;
     flex-wrap: wrap;
@@ -66,15 +66,15 @@ body {
     width: 360px;
     height: 480px;
     text-align: center;
-    margin: $margin;
+    margin: 1.5rem;
 
     a {
         width: 100%;
         height: 100%;
         text-decoration: none;
-        color: #393e46;
-        background-color: #f2f2f0;
-        box-shadow: 10px 5px 5px #c1c1c1;
+        color: $font-color;
+        background-color: $news-bg-color;
+        box-shadow: 10px 5px 5px $box-shadow;
         border-radius: 6px;
     }
 
@@ -100,6 +100,7 @@ body {
         margin: 0 auto 1rem;
         .news-title {
             margin-bottom: 0.4rem;
+            font-size: 18px;
         }
         .news-source {
             @extend .news-title;
@@ -128,8 +129,8 @@ body {
 }
 
 .search-form-wrapper {
-    background-color: #f2f2f0;
-    box-shadow: 10px 5px 5px #c1c1c1;
+    background-color: $news-bg-color;
+    box-shadow: 10px 5px 5px $box-shadow;
     border-radius: 6px;
     width: 70%;
     height: 80vh;
@@ -160,8 +161,8 @@ body {
 }
 
 .search-params-wrapper {
-    background-color: #f2f2f0;
-    box-shadow: 10px 5px 5px #c1c1c1;
+    background-color: $news-bg-color;
+    box-shadow: 10px 5px 5px $box-shadow;
     border-radius: 6px;
     width: 100%;
     height: 100%;
@@ -180,7 +181,7 @@ body {
             height: 30px;
         }
         .search-params-text {
-            color: #f2f2f0;
+            color: $nav-font-color;
             padding: 0.5rem;
             border: 1px;
             border-radius: 4px;
