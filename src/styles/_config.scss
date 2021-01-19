@@ -11,6 +11,7 @@ $font-stack: Rubik, sans-serif;
 $margin: 1rem auto;
 
 $body-font-size: 20px;
+$mobile-nav-font-size: 15px;
 
 $font-color: #2c2e3e;
 $nav-font-color: #f2f2ec;
@@ -25,4 +26,9 @@ $box-shadow: #dfdede;
     flex-direction: $direction;
     justify-content: center;
     align-items: center;
+}
+@mixin mobile($size) {
+    @media (max-width: $size) {
+        @content;
+    }
 }

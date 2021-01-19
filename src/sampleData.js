@@ -20,7 +20,7 @@ const sampleData = [
         country: 'gb',
         description:
             'Executive vice president previously attempted to delay interview until after election',
-        image: 'https://static.independent.co.uk/2020/10/06/19/newFile-1.jpg',
+        image: 'https://static.independent.co.uk/2020/10/06/19/newFile-1.jpgll',
         language: 'en',
         published_at: '2020-10-06T19:15:43+00:00',
         source: 'The Independent',

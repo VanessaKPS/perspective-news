@@ -1,9 +1,11 @@
 import React from 'react'
 import Cube from './Cube'
+import BrokenImage from '../Assets/brokenImage.png'
 const reqCatSvgs = require.context('../Assets/CategoriesSVG', true, /\.svg$/)
 
 const News = (props) => {
     const { newsArray } = props
+
     return (
         <div className='news-wrapper'>
             {newsArray.map((newsStory, index) => {
@@ -17,13 +19,17 @@ const News = (props) => {
                 } = newsStory
                 return (
                     <div className='news' key={`${index} ${title}`}>
-                        <a href={url}>
+                        <a href={url} target='_blank' rel='noopener noreferrer'>
                             <div className='news-image-wrapper'>
                                 {image ? (
                                     <img
+                                        loading='lazy'
                                         className='news-image'
                                         src={image}
-                                        alt='article'
+                                        alt=''
+                                        onError={(e) => {
+                                            e.target.src = `${BrokenImage}`
+                                        }}
                                     />
                                 ) : (
                                     <div className='cube'>

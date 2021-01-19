@@ -3,9 +3,10 @@ import { getRequestedNews } from './DataServices'
 import SearchForm from './SearchForm'
 import RequestedSearchTerms from './RequestedSearchTerms'
 import News from './News'
+import Cube from './Cube'
 const reqCatSvgs = require.context('../Assets/CategoriesSVG', true, /\.svg$/)
 
-const Explore = () => {
+const Search = () => {
     //state for searchParameters collected and sent to database
     const [searchParams, setSearchParams] = useState({
         keyword: '',
@@ -136,7 +137,7 @@ const Explore = () => {
     }
 
     return (
-        <div className='explore-news-wrapper'>
+        <div className='search-news-wrapper'>
             <div className={isClicked ? 'hide' : 'search-form-wrapper'}>
                 <SearchForm
                     reqStatus={reqNewSearch}
@@ -153,7 +154,9 @@ const Explore = () => {
                     categoryImages={reqCatSvgs}
                 />
                 {isLoading ? (
-                    <h1>loading..</h1>
+                    <div className='loading-cube cube'>
+                        <Cube />
+                    </div>
                 ) : (
                     <News
                         newsArray={reqNewsStories}
@@ -165,4 +168,4 @@ const Explore = () => {
     )
 }
 
-export default Explore
+export default Search

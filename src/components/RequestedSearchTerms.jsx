@@ -12,62 +12,73 @@ const RequestedSearchTerms = (props) => {
     }
 
     return (
-        <div className='search-params-wrapper'>
-            <h1>News & Articles for</h1>
-            <div className='search-term-wrapper'>
-                {keywordArray === null
-                    ? null
-                    : keywordArray.map((keyword) => (
-                          <div className='search-params-text keyword'>
-                              {keyword}
-                          </div>
-                      ))}
+        <div className='search-wrapper'>
+            <div className='search-params-wrapper'>
+                <h1>News & Articles for</h1>
+                <div className='search-term-wrapper'>
+                    {keywordArray === null
+                        ? null
+                        : keywordArray.map((keyword) => (
+                              <div className='search-params-text keyword'>
+                                  {keyword}
+                              </div>
+                          ))}
 
-                <div className={limit ? 'search-params-text limit' : 'hide'}>
-                    {limit}
-                </div>
-                <div className={sort ? 'search-params-text sort' : 'hide'}>
-                    {sort}
+                    <div
+                        className={limit ? 'search-params-text limit' : 'hide'}
+                    >
+                        {limit}
+                    </div>
+                    <div className={sort ? 'search-params-text sort' : 'hide'}>
+                        {sort}
+                    </div>
+
+                    {categories.map((category) => {
+                        return (
+                            <div
+                                className='search-params-img'
+                                key={category + 1}
+                            >
+                                <img
+                                    src={
+                                        categoryImages(`./${category}.svg`)
+                                            .default
+                                    }
+                                    alt='country'
+                                ></img>
+                            </div>
+                        )
+                    })}
+                    {countries.map((country) => {
+                        return (
+                            <div
+                                className='search-params-img'
+                                key={country + 1}
+                            >
+                                <img
+                                    src={reqCouSvgs(`./${country}.svg`).default}
+                                    alt='country'
+                                ></img>
+                            </div>
+                        )
+                    })}
+                    {languages.map((language) => {
+                        return (
+                            <div
+                                className='search-params-text language'
+                                key={language + 1}
+                            >
+                                {language}
+                            </div>
+                        )
+                    })}
                 </div>
 
-                {categories.map((category) => {
-                    return (
-                        <div className='search-params-img' key={category + 1}>
-                            <img
-                                src={
-                                    categoryImages(`./${category}.svg`).default
-                                }
-                                alt='country'
-                            ></img>
-                        </div>
-                    )
-                })}
-                {countries.map((country) => {
-                    return (
-                        <div className='search-params-img' key={country + 1}>
-                            <img
-                                src={reqCouSvgs(`./${country}.svg`).default}
-                                alt='country'
-                            ></img>
-                        </div>
-                    )
-                })}
-                {languages.map((language) => {
-                    return (
-                        <div
-                            className='search-params-text language'
-                            key={language + 1}
-                        >
-                            {language}
-                        </div>
-                    )
-                })}
+                <p>Not found what you're looking for? </p>
+                <button className='btn' onClick={newSearch}>
+                    Try again
+                </button>
             </div>
-
-            <p>Not found what you're looking for? </p>
-            <button className='btn' onClick={newSearch}>
-                Try again
-            </button>
         </div>
     )
 }
