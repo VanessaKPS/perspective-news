@@ -6,14 +6,14 @@ import News from '../shared/News'
 const Top50News = () => {
     const [liveNews, setLiveNews] = useState([])
     const [isLoading, setIsLoading] = useState(false)
-
+    debugger
     const getLiveNews = async () => {
+        setIsLoading(true)
         try {
-            setIsLoading(true)
             const response = await getTop50()
 
             setLiveNews(response.data)
-            console.log(response)
+            setIsLoading(false)
         } catch (err) {
             console.log(err)
         }
@@ -21,7 +21,6 @@ const Top50News = () => {
 
     useEffect(() => {
         getLiveNews()
-        return setIsLoading(false)
     }, [])
 
     return (
