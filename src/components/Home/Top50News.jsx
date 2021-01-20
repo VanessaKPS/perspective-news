@@ -9,6 +9,7 @@ const Top50News = () => {
 
     const getLiveNews = async () => {
         try {
+            setIsLoading(true)
             const response = await getTop50()
 
             setLiveNews(response.data)
@@ -19,7 +20,6 @@ const Top50News = () => {
     }
 
     useEffect(() => {
-        setIsLoading(true)
         getLiveNews()
         return setIsLoading(false)
     }, [])

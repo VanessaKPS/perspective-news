@@ -66,7 +66,7 @@ const App = () => {
                     </div>
                 </nav>
 
-                <Route path='/' exact component={Top50News} />
+                <Route path='/perspective-news' exact component={Top50News} />
 
                 <Route path='/search' component={Search} />
             </div>
