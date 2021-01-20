@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
-// import sampleData from '../sampleData'
-import Cube from './Cube'
-import { getTop50 } from './DataServices'
-import News from './News'
+import Cube from '../shared/Cube'
+import { getTop50 } from '../../services/DataServices'
+import News from '../shared/News'
 
 const Top50News = () => {
     const [liveNews, setLiveNews] = useState([])
@@ -25,12 +24,6 @@ const Top50News = () => {
         return setIsLoading(false)
     }, [])
 
-    // useEffect(() => {
-    //     setIsLoading(true)
-    //     setLiveNews(sampleData)
-    //     return setIsLoading(false)
-    // }, [])
-    // console.log(isLoading)
     return (
         <div className='top-50-news-wrapper'>
             <h1>Top 50 News & Articles</h1>

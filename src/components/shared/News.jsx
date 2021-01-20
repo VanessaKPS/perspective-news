@@ -1,7 +1,7 @@
 import React from 'react'
 import Cube from './Cube'
-import BrokenImage from '../Assets/brokenImage.png'
-const reqCatSvgs = require.context('../Assets/CategoriesSVG', true, /\.svg$/)
+import BrokenImage from '../../Assets/UtilitiesImages/brokenImage.png'
+const reqCatSvgs = require.context('../../Assets/CategoriesSVG', true, /\.svg$/)
 
 const News = (props) => {
     const { newsArray } = props

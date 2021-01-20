@@ -5,7 +5,7 @@ import {
     categoriesOptions,
     countriesOptions,
     languagesOptions,
-} from '../Options'
+} from '../../Options'
 
 const SortOptions = (props) => {
     const [sorOption, setSorOption] = useState([null])

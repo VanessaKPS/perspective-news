@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { getRequestedNews } from './DataServices'
+import { getRequestedNews } from '../../services/DataServices'
 import SearchForm from './SearchForm'
 import RequestedSearchTerms from './RequestedSearchTerms'
-import News from './News'
-import Cube from './Cube'
-const reqCatSvgs = require.context('../Assets/CategoriesSVG', true, /\.svg$/)
+import News from '../shared/News'
+import Cube from '../shared/Cube'
+const reqCatSvgs = require.context('../../Assets/CategoriesSVG', true, /\.svg$/)
 
 const Search = () => {
     //state for searchParameters collected and sent to database

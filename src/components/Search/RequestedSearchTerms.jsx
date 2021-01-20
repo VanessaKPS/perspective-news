@@ -1,5 +1,5 @@
 import React from 'react'
-const reqCouSvgs = require.context('../Assets/CountriesSVG', true, /\.svg$/)
+const reqCouSvgs = require.context('../../Assets/CountriesSVG', true, /\.svg$/)
 
 const RequestedSearchTerms = (props) => {
     const { reqTerms, newSearch, categoryImages } = props

@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import Top50News from './Top50News'
-import Search from './Search'
-import { ReactComponent as MenuIcon } from '../Assets/CategoriesSVG/menu.svg'
-import { ReactComponent as CloseIcon } from '../Assets/CategoriesSVG/close.svg'
-import Logo from '../Assets/CategoriesSVG/cube.svg'
+import Top50News from './Home/Top50News'
+import Search from './Search/Search'
+import { ReactComponent as MenuIcon } from '../Assets/UtilitiesImages/menu.svg'
+import { ReactComponent as CloseIcon } from '../Assets/UtilitiesImages/close.svg'
+import Logo from '../Assets/UtilitiesImages/cube.svg'
 import '../styles/styles.scss'
 
 const App = () => {
@@ -32,7 +32,7 @@ const App = () => {
                                 alt='perspective news aggregator app'
                             />
                             <div className='brand-text-wrapper'>
-                                Perspective{' '}
+                                Perspective
                                 <span className='brand-text-span'>News</span>
                             </div>
                         </div>
