@@ -42,12 +42,16 @@ body {
                 font-size: $mobile-nav-font-size;
             }
         }
+        &:hover {
+            color: rgba(220, 0, 0, 0.6);
+        }
     }
 
     .navbar-link-wrapper {
         width: 20%;
         @include flexContainer(row);
         justify-content: space-between;
+        font-size: $mobile-nav-font-size;
         @include mobile(1023px) {
             display: none;
         }
@@ -61,6 +65,9 @@ body {
     .nav-link {
         text-decoration: none;
         color: $nav-font-color;
+        &:hover {
+            color: rgba(220, 0, 0, 0.6);
+        }
         cursor: pointer;
         @include mobile(1023px) {
             margin-bottom: 0.5rem;
