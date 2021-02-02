@@ -29,6 +29,7 @@ const Search = () => {
     const getRequestedLiveNews = async (searchTerms) => {
         try {
             const result = await getRequestedNews(searchTerms)
+            console.log(result.data)
             setReqNewsStories(result.data)
             setIsLoading(false)
             console.log(`the result.data is :${result.data}`)

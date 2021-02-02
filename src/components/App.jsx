@@ -24,7 +24,10 @@ const App = () => {
         <Router>
             <div className='app-wrapper'>
                 <nav className='navbar'>
-                    <Link to='/' className='navbar-brand-wrapper'>
+                    <Link
+                        to='/perspective-news'
+                        className='navbar-brand-wrapper'
+                    >
                         <div className='navbar-brand'>
                             <img
                                 className='logo'
@@ -56,11 +59,14 @@ const App = () => {
                             onClick={handleCloseClick}
                             className='close-menu'
                         />
-                        <Link to='/' className='nav-link'>
+                        <Link to='/perspective-news' className='nav-link'>
                             Home
                         </Link>
 
-                        <Link to='/search' className='nav-link'>
+                        <Link
+                            to='/perspective-news/search'
+                            className='nav-link'
+                        >
                             Search
                         </Link>
                     </div>
@@ -68,7 +74,7 @@ const App = () => {
 
                 <Route path='/perspective-news' exact component={Top50News} />
 
-                <Route path='/search' component={Search} />
+                <Route path='/perspective-news/search' component={Search} />
             </div>
         </Router>
     )

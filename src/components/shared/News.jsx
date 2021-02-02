@@ -51,6 +51,9 @@ const News = (props) => {
                                         reqCatSvgs(`./${category}.svg`).default
                                     }
                                     alt='country'
+                                    onError={(e) => {
+                                        e.target.src = `${BrokenImage}`
+                                    }}
                                 ></img>
                             </div>
                         </a>

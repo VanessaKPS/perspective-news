@@ -6,12 +6,12 @@ import News from '../shared/News'
 const Top50News = () => {
     const [liveNews, setLiveNews] = useState([])
     const [isLoading, setIsLoading] = useState(false)
-    debugger
+
     const getLiveNews = async () => {
         setIsLoading(true)
         try {
             const response = await getTop50()
-
+            console.log(response.data)
             setLiveNews(response.data)
             setIsLoading(false)
         } catch (err) {
