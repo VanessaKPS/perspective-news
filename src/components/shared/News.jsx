@@ -6,6 +6,17 @@ const reqCatSvgs = require.context('../../Assets/CategoriesSVG', true, /\.svg$/)
 const News = (props) => {
     const { newsArray } = props
 
+    const categories = [
+        'business',
+        'entertainment',
+        'general',
+        'health',
+        'politics',
+        'science',
+        'sports',
+        'technology',
+    ]
+
     return (
         <div className='news-wrapper'>
             {newsArray.map((newsStory, index) => {
@@ -17,6 +28,7 @@ const News = (props) => {
                     category,
                     url,
                 } = newsStory
+
                 return (
                     <div className='news' key={`${index} ${title}`}>
                         <a href={url} target='_blank' rel='noopener noreferrer'>
@@ -48,12 +60,13 @@ const News = (props) => {
                                 <img
                                     className='news-category-image'
                                     src={
-                                        reqCatSvgs(`./${category}.svg`).default
+                                        categories.includes(category)
+                                            ? reqCatSvgs(`./${category}.svg`)
+                                                  .default
+                                            : reqCatSvgs('./general.svg')
+                                                  .default
                                     }
                                     alt='country'
-                                    onError={(e) => {
-                                        e.target.src = `${BrokenImage}`
-                                    }}
                                 ></img>
                             </div>
                         </a>
