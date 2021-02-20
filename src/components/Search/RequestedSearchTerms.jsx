@@ -3,12 +3,12 @@ const reqCouSvgs = require.context('../../Assets/CountriesSVG', true, /\.svg$/)
 
 const RequestedSearchTerms = (props) => {
     const { reqTerms, newSearch, categoryImages } = props
-    const { keyword, limit, sort, categories, countries, languages } = reqTerms
-    let keywordArray = keyword
-    if (keyword === '') {
-        keywordArray = null
+    const { keywords, limit, sort, categories, countries, languages } = reqTerms
+    let keywordsArray = keywords
+    if (keywords === '') {
+        keywordsArray = null
     } else {
-        keywordArray = keyword.split(',')
+        keywordsArray = keywords.split(',')
     }
 
     return (
@@ -16,11 +16,11 @@ const RequestedSearchTerms = (props) => {
             <div className='search-params-wrapper'>
                 <h1>News & Articles for</h1>
                 <div className='search-term-wrapper'>
-                    {keywordArray === null
+                    {keywordsArray === null
                         ? null
-                        : keywordArray.map((keyword) => (
-                              <div className='search-params-text keyword'>
-                                  {keyword}
+                        : keywordsArray.map((keywords) => (
+                              <div className='search-params-text keywords'>
+                                  {keywords}
                               </div>
                           ))}
 

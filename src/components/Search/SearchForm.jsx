@@ -9,7 +9,7 @@ import {
 const SearchForm = (props) => {
     const { reqTerms, reqStatus, submission, inputChange, selectChange } = props
 
-    const { keyword, limit } = reqTerms
+    const { keywords, limit } = reqTerms
 
     const submit = (e) => {
         submission(e)
@@ -25,15 +25,15 @@ const SearchForm = (props) => {
 
     return (
         <form className='search-form' onSubmit={submit}>
-            <label htmlFor='keyword'>Keywords</label>
+            <label htmlFor='keywords'>keywordss</label>
             <input
-                className='keyword-input'
+                className='keywords-input'
                 type='text'
-                id='keyword'
-                name='keyword'
-                value={keyword}
+                id='keywords'
+                name='keywords'
+                value={keywords}
                 onChange={textChange}
-                placeholder='Separate multiple keywords with ","'
+                placeholder='Separate multiple keywordss with ","'
             ></input>
             <br />
             <label htmlFor='limit'>No. of Articles</label>

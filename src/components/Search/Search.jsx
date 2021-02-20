@@ -9,7 +9,7 @@ const reqCatSvgs = require.context('../../Assets/CategoriesSVG', true, /\.svg$/)
 const Search = () => {
     //state for searchParameters collected and sent to database
     const [searchParams, setSearchParams] = useState({
-        keyword: '',
+        keywords: '',
         limit: '',
         sort: '',
         categories: [],
@@ -43,7 +43,7 @@ const Search = () => {
         // setReqNewSearch((prevValue) => !prevValue)
         setIsClicked((prevValue) => !prevValue)
         setSearchParams({
-            keyword: '',
+            keywords: '',
             limit: '',
             sort: '',
             categories: [],
@@ -62,10 +62,10 @@ const Search = () => {
 
     //function to set searchParams for strings
     const handleInputChange = (e) => {
-        if (e.target.name === 'keyword') {
+        if (e.target.name === 'keywords') {
             setSearchParams((prevValues) => ({
                 ...prevValues,
-                keyword: e.target.value,
+                keywords: e.target.value,
             }))
         }
         if (e.target.name === 'limit') {
