@@ -25,7 +25,7 @@ const SearchForm = (props) => {
 
     return (
         <form className='search-form' onSubmit={submit}>
-            <label htmlFor='keywords'>keywordss</label>
+            <label htmlFor='keywords'>keywords</label>
             <input
                 className='keywords-input'
                 type='text'
@@ -33,7 +33,7 @@ const SearchForm = (props) => {
                 name='keywords'
                 value={keywords}
                 onChange={textChange}
-                placeholder='Separate multiple keywordss with ","'
+                placeholder='Separate multiple keywords with ","'
             ></input>
             <br />
             <label htmlFor='limit'>No. of Articles</label>
