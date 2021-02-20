@@ -10,11 +10,8 @@ const Search = () => {
     //state for searchParameters collected and sent to database
     const [searchParams, setSearchParams] = useState({
         keywords: '',
-        limit: '',
-        sort: '',
-        categories: [],
-        countries: [],
-        languages: [],
+        limit: '50',
+        sort: 'published_desc',
     })
     // state for data retrieved from database
     const [reqNewsStories, setReqNewsStories] = useState([])
@@ -44,11 +41,8 @@ const Search = () => {
         setIsClicked((prevValue) => !prevValue)
         setSearchParams({
             keywords: '',
-            limit: '',
-            sort: '',
-            categories: [],
-            countries: [],
-            languages: [],
+            limit: '50',
+            sort: 'published_desc',
         })
     }
     //function to change state to re-render search form, change tryAgain state to render News stories, get data from database
@@ -87,13 +81,7 @@ const Search = () => {
 
                 break
             case 'categories':
-                if (option === null) {
-                    setSearchParams((prevValues) => ({
-                        ...prevValues,
-                        categories: [],
-                        //
-                    }))
-                } else {
+                if (option !== null) {
                     setSearchParams((prevValues) => ({
                         ...prevValues,
                         categories: option,
@@ -103,13 +91,7 @@ const Search = () => {
 
                 break
             case 'countries':
-                if (option === null) {
-                    setSearchParams((prevValues) => ({
-                        ...prevValues,
-                        countries: [],
-                        //
-                    }))
-                } else {
+                if (option !== null) {
                     setSearchParams((prevValues) => ({
                         ...prevValues,
                         countries: option,
@@ -118,13 +100,7 @@ const Search = () => {
                 }
                 break
             case 'languages':
-                if (option === null) {
-                    setSearchParams((prevValues) => ({
-                        ...prevValues,
-                        languages: [],
-                        //
-                    }))
-                } else {
+                if (option !== null) {
                     setSearchParams((prevValues) => ({
                         ...prevValues,
                         languages: option,
