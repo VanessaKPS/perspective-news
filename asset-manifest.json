@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/perspective-news/static/css/main.02871c4b.chunk.css",
-    "main.js": "/perspective-news/static/js/main.e0eba766.chunk.js",
-    "main.js.map": "/perspective-news/static/js/main.e0eba766.chunk.js.map",
+    "main.js": "/perspective-news/static/js/main.bd070326.chunk.js",
+    "main.js.map": "/perspective-news/static/js/main.bd070326.chunk.js.map",
     "runtime-main.js": "/perspective-news/static/js/runtime-main.5e7e111f.js",
     "runtime-main.js.map": "/perspective-news/static/js/runtime-main.5e7e111f.js.map",
-    "static/js/2.22021326.chunk.js": "/perspective-news/static/js/2.22021326.chunk.js",
-    "static/js/2.22021326.chunk.js.map": "/perspective-news/static/js/2.22021326.chunk.js.map",
+    "static/js/2.ccdbf5fd.chunk.js": "/perspective-news/static/js/2.ccdbf5fd.chunk.js",
+    "static/js/2.ccdbf5fd.chunk.js.map": "/perspective-news/static/js/2.ccdbf5fd.chunk.js.map",
     "index.html": "/perspective-news/index.html",
     "static/css/main.02871c4b.chunk.css.map": "/perspective-news/static/css/main.02871c4b.chunk.css.map",
-    "static/js/2.22021326.chunk.js.LICENSE.txt": "/perspective-news/static/js/2.22021326.chunk.js.LICENSE.txt",
+    "static/js/2.ccdbf5fd.chunk.js.LICENSE.txt": "/perspective-news/static/js/2.ccdbf5fd.chunk.js.LICENSE.txt",
     "static/media/ae.svg": "/perspective-news/static/media/ae.a543d99c.svg",
     "static/media/ar.svg": "/perspective-news/static/media/ar.5836d3bc.svg",
     "static/media/at.svg": "/perspective-news/static/media/at.9265e0da.svg",
@@ -77,8 +77,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.5e7e111f.js",
-    "static/js/2.22021326.chunk.js",
+    "static/js/2.ccdbf5fd.chunk.js",
     "static/css/main.02871c4b.chunk.css",
-    "static/js/main.e0eba766.chunk.js"
+    "static/js/main.bd070326.chunk.js"
   ]
 }
