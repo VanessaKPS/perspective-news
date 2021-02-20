@@ -29,7 +29,6 @@ const Search = () => {
             console.log(result.data)
             setReqNewsStories(result.data)
             setIsLoading(false)
-            console.log(`the result.data is :${result.data}`)
         } catch (err) {
             setIsLoading(false)
             console.log(err)
